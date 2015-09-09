@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="p3B-49-gr2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="p3B-49-gr2">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -59,14 +60,130 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cvv-vv-oRy">
+                            <mapView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cvv-vv-oRy">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="f9H-OY-xlT" id="9iz-3k-o5S"/>
+                                </connections>
                             </mapView>
+                            <view appearanceType="aqua" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MIN-Vi-j2V" customClass="dView">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="TQw-FJ-vUU">
+                                <rect key="frame" x="0.0" y="426" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.4941176471" green="0.4941176471" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button appearanceType="aqua" opaque="NO" alpha="0.40000000000000002" tag="100" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F9-iz-wMh">
+                                <rect key="frame" x="4" y="474" width="72" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="LNg-Gk-BlD"/>
+                                    <constraint firstAttribute="height" constant="36" id="sCs-Nf-BT9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="我的位置">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionOperations:" destination="f9H-OY-xlT" eventType="touchUpInside" id="7Sw-IK-Ghs"/>
+                                </connections>
+                            </button>
+                            <button appearanceType="aqua" opaque="NO" alpha="0.40000000000000002" tag="101" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYw-yN-0qw">
+                                <rect key="frame" x="84" y="474" width="72" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="dzf-e4-dZZ"/>
+                                    <constraint firstAttribute="width" constant="72" id="kXu-ZF-9gY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="添加标记">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionOperations:" destination="f9H-OY-xlT" eventType="touchUpInside" id="1SJ-XY-EIk"/>
+                                </connections>
+                            </button>
+                            <button appearanceType="aqua" opaque="NO" alpha="0.40000000596046448" tag="102" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-h2-sHa">
+                                <rect key="frame" x="164" y="474" width="72" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="7ha-m5-Z4m"/>
+                                    <constraint firstAttribute="width" constant="72" id="heP-qW-c0a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="划选区域">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" title="选划中.."/>
+                                <connections>
+                                    <action selector="actionOperations:" destination="f9H-OY-xlT" eventType="touchUpInside" id="fJg-kT-XlI"/>
+                                </connections>
+                            </button>
+                            <button appearanceType="aqua" opaque="NO" alpha="0.40000000596046448" tag="103" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wi-Bd-s5K">
+                                <rect key="frame" x="244" y="474" width="72" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="7oh-p5-KDR"/>
+                                    <constraint firstAttribute="height" constant="36" id="YxU-Db-O3H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="清除标记">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionOperations:" destination="f9H-OY-xlT" eventType="touchUpInside" id="F1h-Lr-F1j"/>
+                                </connections>
+                            </button>
+                            <segmentedControl appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZFr-zt-53n">
+                                <rect key="frame" x="164" y="70" width="152" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="标准"/>
+                                    <segment title="卫星"/>
+                                    <segment title="混合"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentDidSelected:" destination="jqQ-hy-9f0" eventType="valueChanged" id="Afu-wA-2Bv"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZFr-zt-53n" firstAttribute="top" secondItem="PQH-e5-aSJ" secondAttribute="bottom" constant="6" id="2a3-Tt-3en"/>
+                            <constraint firstItem="od2-cc-xbe" firstAttribute="top" secondItem="2F9-iz-wMh" secondAttribute="bottom" constant="9" id="A3e-Xe-dTA"/>
+                            <constraint firstItem="od2-cc-xbe" firstAttribute="top" secondItem="eYw-yN-0qw" secondAttribute="bottom" constant="9" id="A9u-AP-WNA"/>
+                            <constraint firstAttribute="trailing" secondItem="Cvv-vv-oRy" secondAttribute="trailing" id="B0q-3a-jQz"/>
+                            <constraint firstItem="MIN-Vi-j2V" firstAttribute="leading" secondItem="6na-FR-i7P" secondAttribute="leading" id="CmA-mh-aiw"/>
+                            <constraint firstItem="Cvv-vv-oRy" firstAttribute="top" secondItem="PQH-e5-aSJ" secondAttribute="bottom" id="JKe-c0-LKk"/>
+                            <constraint firstAttribute="trailing" secondItem="MIN-Vi-j2V" secondAttribute="trailing" id="Lyb-Sd-0lO"/>
+                            <constraint firstItem="Cvv-vv-oRy" firstAttribute="leading" secondItem="6na-FR-i7P" secondAttribute="leading" id="XVc-as-FSr"/>
+                            <constraint firstItem="od2-cc-xbe" firstAttribute="top" secondItem="kPu-h2-sHa" secondAttribute="bottom" constant="9" id="Zwm-SU-KpF"/>
+                            <constraint firstItem="od2-cc-xbe" firstAttribute="top" secondItem="4Wi-Bd-s5K" secondAttribute="bottom" constant="9" id="a0d-ff-v8F"/>
+                            <constraint firstItem="MIN-Vi-j2V" firstAttribute="top" secondItem="PQH-e5-aSJ" secondAttribute="bottom" id="aZh-xi-WWn"/>
+                            <constraint firstItem="od2-cc-xbe" firstAttribute="top" secondItem="MIN-Vi-j2V" secondAttribute="bottom" id="mQD-pK-hGy"/>
+                            <constraint firstItem="od2-cc-xbe" firstAttribute="top" secondItem="Cvv-vv-oRy" secondAttribute="bottom" id="mQd-yN-nun"/>
+                            <constraint firstItem="4Wi-Bd-s5K" firstAttribute="top" secondItem="TQw-FJ-vUU" secondAttribute="bottom" constant="8" id="q0O-Jy-Ivx"/>
+                            <constraint firstAttribute="trailing" secondItem="ZFr-zt-53n" secondAttribute="trailing" constant="4" id="vei-UM-A1w"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="地图" id="hVb-Aj-fWC"/>
+                    <connections>
+                        <outlet property="drowBtn" destination="kPu-h2-sHa" id="Oqz-fb-PnC"/>
+                        <outlet property="drowView" destination="MIN-Vi-j2V" id="7tc-iT-ILA"/>
+                        <outlet property="mapView" destination="Cvv-vv-oRy" id="BKf-KJ-FUX"/>
+                        <outlet property="tips" destination="TQw-FJ-vUU" id="3ms-nJ-DBY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqQ-hy-9f0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,7 +213,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="c6C-sR-AZH" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="测试百度地图" id="XlJ-RG-jF2"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="BlY-26-jIi">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -135,7 +252,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="OUN-G4-3QH" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="测试地图" id="xb1-Zm-xg2"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fgI-tL-ACD">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

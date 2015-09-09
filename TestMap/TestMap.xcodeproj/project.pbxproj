@@ -27,6 +27,8 @@
 		E734C1FD1B7DD42900D81A73 /* BaiduMapOthersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E734C1FC1B7DD42900D81A73 /* BaiduMapOthersViewController.m */; };
 		E734C1FF1B7DD56200D81A73 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E734C1FE1B7DD56200D81A73 /* MapKit.framework */; };
 		E734C2011B7DDAE800D81A73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E734C2001B7DDAE800D81A73 /* CoreLocation.framework */; };
+		E7C2EA581BA0241D00CD14F6 /* dView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C2EA571BA0241D00CD14F6 /* dView.m */; };
+		E7E1C86C1B8B0F7800C45ED8 /* MyPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E1C86B1B8B0F7800C45ED8 /* MyPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,10 @@
 		E734C1FC1B7DD42900D81A73 /* BaiduMapOthersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduMapOthersViewController.m; sourceTree = "<group>"; };
 		E734C1FE1B7DD56200D81A73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E734C2001B7DDAE800D81A73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E7C2EA561BA0241D00CD14F6 /* dView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dView.h; sourceTree = "<group>"; };
+		E7C2EA571BA0241D00CD14F6 /* dView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dView.m; sourceTree = "<group>"; };
+		E7E1C86A1B8B0F7800C45ED8 /* MyPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPoint.h; sourceTree = "<group>"; };
+		E7E1C86B1B8B0F7800C45ED8 /* MyPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +184,10 @@
 			children = (
 				E734C1F21B7DD3D100D81A73 /* TestMapViewController.h */,
 				E734C1F31B7DD3D100D81A73 /* TestMapViewController.m */,
+				E7E1C86A1B8B0F7800C45ED8 /* MyPoint.h */,
+				E7E1C86B1B8B0F7800C45ED8 /* MyPoint.m */,
+				E7C2EA561BA0241D00CD14F6 /* dView.h */,
+				E7C2EA571BA0241D00CD14F6 /* dView.m */,
 				E734C1F81B7DD40C00D81A73 /* TestMapOthersViewController.h */,
 				E734C1F91B7DD40C00D81A73 /* TestMapOthersViewController.m */,
 				E734C1F51B7DD3EE00D81A73 /* BaiduMapViewController.h */,
@@ -292,7 +302,9 @@
 				E734C1FD1B7DD42900D81A73 /* BaiduMapOthersViewController.m in Sources */,
 				E734C1CD1B7DCFBD00D81A73 /* AppDelegate.m in Sources */,
 				E734C1C91B7DCFBD00D81A73 /* main.m in Sources */,
+				E7E1C86C1B8B0F7800C45ED8 /* MyPoint.m in Sources */,
 				E734C1F71B7DD3EE00D81A73 /* BaiduMapViewController.m in Sources */,
+				E7C2EA581BA0241D00CD14F6 /* dView.m in Sources */,
 				E734C1FA1B7DD40C00D81A73 /* TestMapOthersViewController.m in Sources */,
 				E734C1F41B7DD3D100D81A73 /* TestMapViewController.m in Sources */,
 			);
@@ -423,7 +435,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestMap/TestMap-Prefix.pch";
 				INFOPLIST_FILE = "TestMap/TestMap-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -438,7 +450,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestMap/TestMap-Prefix.pch";
 				INFOPLIST_FILE = "TestMap/TestMap-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -503,6 +515,7 @@
 				E734C1ED1B7DCFBD00D81A73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E734C1EE1B7DCFBD00D81A73 /* Build configuration list for PBXNativeTarget "TestMapTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +524,7 @@
 				E734C1F01B7DCFBD00D81A73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

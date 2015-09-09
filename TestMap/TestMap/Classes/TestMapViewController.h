@@ -15,6 +15,7 @@
 @interface TestMapViewController : UIViewController
 
 
+- (IBAction)actionOperations:(UIButton *)sender;
 
 
 @end
