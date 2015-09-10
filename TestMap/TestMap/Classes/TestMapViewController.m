@@ -59,7 +59,9 @@
   polLibcomParks = [NSMutableArray new];
   annotationPoints = [NSMutableArray new];
   drawarrla = [NSMutableArray new];
-  [self.drowView setDefaultData];
+//  [self.drowView setDefaultData];
+//  CGRect tFrame = self.drowView.frame;
+//  self.drowView.frame = tFrame;
   self.drowView.hidden = YES;
   
 }
@@ -188,26 +190,9 @@
     isLoadMineLocation = YES;
   }
   
-  // 获取详细的街道信息
-  CLLocation * newLocation = userLocation.location;
-  CLGeocoder *clGeoCoder = [[CLGeocoder alloc] init];
-  CLGeocodeCompletionHandler handle = ^(NSArray *placemarks,NSError *error)
-  {
-    for (CLPlacemark * placeMark in placemarks)
-    {
-      NSDictionary *addressDic=placeMark.addressDictionary;
-      
-      NSString *state=[addressDic objectForKey:@"State"];
-      NSString *city=[addressDic objectForKey:@"City"];
-      NSString *subLocality=[addressDic objectForKey:@"SubLocality"];
-      NSString *street=[addressDic objectForKey:@"Street"];
-      
-      // ---- state:上海市 , city:上海市市辖区 , subLocality:长宁区 , street :芙蓉江路  ----
-      NSLog(@"---- 我的位置: state:%@ , city:%@ , subLocality:%@ , street :%@  ----",state,city,subLocality,street);
-    }
-
-  };
-  [clGeoCoder reverseGeocodeLocation:newLocation completionHandler:handle];
+  [self getReverseGeocodeWithLocation:userLocation.location withComplete:^(NSDictionary *addresses) {
+    NSLog(@"-------- 当前用户的位置 :%@ ---------",addresses);
+  }];
 
 }
 
@@ -233,7 +218,7 @@
   MKCoordinateRegion region = mapView.region;
   NSString *regionStr = [NSString stringWithFormat:@" center:%f,%f span:%f,%f ",region.center.longitude,region.center.latitude,region.span.longitudeDelta,region.span.latitudeDelta];
   NSLog(@"--- regionDidChangeAnimated:%@ ---",regionStr);
-  self.tips.text = [NSString stringWithFormat:@"当前位置:\n经度:%4.4f 纬度:%4.4f",region.center.longitude,region.center.latitude];
+  self.tips.text = [NSString stringWithFormat:@"当前位置:\n经度:%f 纬度:%f",region.center.longitude,region.center.latitude];
 }
 
 
@@ -408,7 +393,7 @@
 //    [self.mapView removeOverlay:polLibcomPark];
 //    [self.mapView removeOverlays:polLibcomParks];
     
-    CGPoint point = [[touches anyObject] locationInView:self.view];
+    CGPoint point = [[touches anyObject] locationInView:self.mapView];
     //CLLocationCoordinate2D coo = [mapview convertPoint:point toCoordinateFromView:mapview];
     [drawarrla addObject:[NSValue valueWithCGPoint:point]];
     //        libComPark[0] = CLLocationCoordinate2DMake(coo.latitude,coo.longitude);
@@ -416,7 +401,7 @@
 }
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
   if (candraw) {
-    CGPoint point = [[touches anyObject] locationInView:self.view];
+    CGPoint point = [[touches anyObject] locationInView:self.mapView];
     [drawarrla addObject:[NSValue valueWithCGPoint:point]];
 //        CLLocationCoordinate2D coo = [mapview convertPoint:point toCoordinateFromView:mapview];
 //        libComPark[count] = CLLocationCoordinate2DMake(coo.latitude,coo.longitude);
@@ -443,6 +428,48 @@
     self.drowBtn.selected = NO;
   }
 }
+
+
+// 获取详细的街道信息
+- (void) getReverseGeocodeWithLocation:(CLLocation*)theLocation withComplete:(void(^)(NSDictionary *addresses))theComplete
+{
+  // 获取详细的街道信息
+  CLGeocoder *clGeoCoder = [[CLGeocoder alloc] init];
+  CLGeocodeCompletionHandler handle = ^(NSArray *placemarks,NSError *error)
+  {
+    for (CLPlacemark * placeMark in placemarks)
+    {
+      NSDictionary *addressDic=placeMark.addressDictionary;
+      
+      NSString *state=[addressDic objectForKey:@"State"];
+      NSString *city=[addressDic objectForKey:@"City"];
+      NSString *subLocality=[addressDic objectForKey:@"SubLocality"];
+      NSString *street=[addressDic objectForKey:@"Street"];
+      NSString *contry = [addressDic objectForKey:@"Country"];
+      NSString *contryCode = [addressDic objectForKey:@"CountryCode"];
+      NSString *name = [addressDic objectForKey:@"Name"];
+      NSString *descStr = [addressDic objectForKey:@"FormattedAddressLines"];
+      /*
+       FormattedAddressLines
+       SubAdministrativeArea
+       Country
+       */
+      NSLog(@"------ FormattedAddressLines: %@ ------",descStr);
+      // ---- 我的位置(中国上海市长宁区仙霞新村街道天山路芙蓉江路): contry:中国(CN) , state:上海市 , city:上海市市辖区 , subLocality:长宁区 , street :芙蓉江路  ----
+      NSLog(@"---- 我的位置(%@): contry:%@(%@) , state:%@ , city:%@ , subLocality:%@ , street :%@  ----",name,contry,contryCode,state,city,subLocality,street);
+      if (theComplete) {
+        theComplete(addressDic);
+      }
+    }
+    
+  };
+  [clGeoCoder reverseGeocodeLocation:theLocation completionHandler:handle];
+}
+
+
+
+
+
 
 
 @end

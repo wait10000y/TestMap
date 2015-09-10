@@ -10,7 +10,7 @@
 
 @implementation dView
 {
-  void *data;
+//  void *data;
   CGContextRef context;
   BOOL candraw;
 }
@@ -28,17 +28,21 @@
 {
   int width = self.bounds.size.width;
   int height = self.bounds.size.height;
-  data = malloc(width * height * 4);
+//  data = malloc(width * height * 4);
   CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-  context = CGBitmapContextCreate(Nil, width, height, 8, 4 * width,
-                                  colorSpace, kCGImageAlphaPremultipliedFirst);
+  context = CGBitmapContextCreate(Nil, width, height, 8, 4 * width,colorSpace, kCGImageAlphaPremultipliedFirst);
   CGColorSpaceRelease(colorSpace);
 
+  NSLog(@"------ CGBitmapContext size:%@ --------",NSStringFromCGRect(self.frame));
+  
   candraw = YES;
 }
 
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
+  if (context == NULL) {
+    [self setDefaultData];
+  }
+
     CGImageRef image = CGBitmapContextCreateImage(context);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextDrawImage(currentContext, rect, image);
@@ -47,6 +51,7 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)evnet {
+  
     CGPoint p = [[touches anyObject] locationInView:self];
     CGPoint q = [[touches anyObject] previousLocationInView:self];
     
@@ -57,7 +62,7 @@
     CGContextAddLineToPoint(context, p.x, p.y);
     //CGFloat bluecolor[4]={1.0f,0.0f,0.0f,1.0f};
     //CGContextSetStrokeColor(context, bluecolor);
-    CGContextSetRGBStrokeColor(context,0,0.7,0,1);//要用RGB的
+    CGContextSetRGBStrokeColor(context,0,1,0,0.7);//要用RGB的
     CGContextStrokePath(context);
     [self setNeedsDisplay];
 }

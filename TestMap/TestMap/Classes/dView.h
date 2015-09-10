@@ -16,6 +16,6 @@
 
 @interface dView : UIView
 
--(void)setDefaultData;
+//-(void)setDefaultData;
 
 @end

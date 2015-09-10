@@ -10,29 +10,29 @@
 	<string>TestMap</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>09BCDD22-D653-4EB6-83B8-2F2221BD05FB</key>
+		<key>33BBA8C9B03D7EF3FCD38BF9AE572E9A7635662F</key>
 		<string>https://github.com/wait10000y/TestMap.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>TestMap/TestMap.xcodeproj/project.xcworkspace</string>
+	<string>TestMap/TestMap.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>09BCDD22-D653-4EB6-83B8-2F2221BD05FB</key>
+		<key>33BBA8C9B03D7EF3FCD38BF9AE572E9A7635662F</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/wait10000y/TestMap.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>09BCDD22-D653-4EB6-83B8-2F2221BD05FB</string>
+	<string>33BBA8C9B03D7EF3FCD38BF9AE572E9A7635662F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>09BCDD22-D653-4EB6-83B8-2F2221BD05FB</string>
+			<string>33BBA8C9B03D7EF3FCD38BF9AE572E9A7635662F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TestMap</string>
 		</dict>
